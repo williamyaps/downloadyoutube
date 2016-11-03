@@ -464,6 +464,528 @@
                                  /sdcard/Music/ &amp;&amp; rm {}'
 --convert-subs FORMAT            Convert the subtitles to other format
                                  (currently supported: srt|ass|vtt)</code></pre>
+	<h1 style="box-sizing: border-box; font-size: 2em; margin: 24px 0px 16px; font-weight: 600; line-height: 1.25; padding-bottom: 0.3em; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	OUTPUT TEMPLATE</h1>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	The<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-o</code><span class="Apple-converted-space">&nbsp;</span>option 
+	allows users to indicate a template for the output file names.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	<strong style="box-sizing: border-box; font-weight: 600;">tl;dr:</strong><span class="Apple-converted-space">&nbsp;</span><a style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html#output-template-examples">navigate 
+	me to examples</a>.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	The basic usage is not to set any template arguments when downloading a 
+	single file, like in<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">youtube-dl 
+	-o funny_video.flv &quot;http://some/video&quot;</code>. However, it may contain 
+	special sequences that will be replaced when downloading each video. The 
+	special sequences have the format<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">%(NAME)s</code>. 
+	To clarify, that is a percent symbol followed by a name in parentheses, 
+	followed by a lowercase S. Allowed names are:</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		id</code>: Video identifier</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		title</code>: Video title</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		url</code>: Video URL</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		ext</code>: Video filename extension</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		alt_title</code>: A secondary title of the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		display_id</code>: An alternative identifier for the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		uploader</code>: Full name of the video uploader</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		license</code>: License name the video is licensed under</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		creator</code>: The creator of the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		release_date</code>: The date (YYYYMMDD) when the video was released</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		timestamp</code>: UNIX timestamp of the moment the video became 
+		available</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		upload_date</code>: Video upload date (YYYYMMDD)</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		uploader_id</code>: Nickname or id of the video uploader</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		location</code>: Physical location where the video was filmed</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		duration</code>: Length of the video in seconds</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		view_count</code>: How many users have watched the video on the platform</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		like_count</code>: Number of positive ratings of the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		dislike_count</code>: Number of negative ratings of the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		repost_count</code>: Number of reposts of the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		average_rating</code>: Average rating give by users, the scale used 
+		depends on the webpage</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		comment_count</code>: Number of comments on the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		age_limit</code>: Age restriction for the video (years)</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		format</code>: A human-readable description of the format</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		format_id</code>: Format code specified by<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">--format</code></li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		format_note</code>: Additional info about the format</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		width</code>: Width of the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		height</code>: Height of the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		resolution</code>: Textual description of width and height</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		tbr</code>: Average bitrate of audio and video in KBit/s</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		abr</code>: Average audio bitrate in KBit/s</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		acodec</code>: Name of the audio codec in use</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		asr</code>: Audio sampling rate in Hertz</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		vbr</code>: Average video bitrate in KBit/s</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		fps</code>: Frame rate</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		vcodec</code>: Name of the video codec in use</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		container</code>: Name of the container format</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		filesize</code>: The number of bytes, if known in advance</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		filesize_approx</code>: An estimate for the number of bytes</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		protocol</code>: The protocol that will be used for the actual download</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		extractor</code>: Name of the extractor</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		extractor_key</code>: Key name of the extractor</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		epoch</code>: Unix epoch when creating the file</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		autonumber</code>: Five-digit number that will be increased with each 
+		download, starting at zero</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		playlist</code>: Name or id of the playlist that contains the video</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		playlist_index</code>: Index of the video in the playlist padded with 
+		leading zeros according to the total length of the playlist</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		playlist_id</code>: Playlist identifier</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		playlist_title</code>: Playlist title</li>
+	</ul>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Available for the video that belongs to some logical chapter or section:</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		chapter</code>: Name or title of the chapter the video belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		chapter_number</code>: Number of the chapter the video belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		chapter_id</code>: Id of the chapter the video belongs to</li>
+	</ul>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Available for the video that is an episode of some series or programme:</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		series</code>: Title of the series or programme the video episode 
+		belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		season</code>: Title of the season the video episode belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		season_number</code>: Number of the season the video episode belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		season_id</code>: Id of the season the video episode belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		episode</code>: Title of the video episode</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		episode_number</code>: Number of the video episode within a season</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		episode_id</code>: Id of the video episode</li>
+	</ul>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Available for the media that is a track or a part of a music album:</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		track</code>: Title of the track</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		track_number</code>: Number of the track within an album or a disc</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		track_id</code>: Id of the track</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		artist</code>: Artist(s) of the track</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		genre</code>: Genre(s) of the track</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		album</code>: Title of the album the track belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		album_type</code>: Type of the album</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		album_artist</code>: List of all artists appeared on the album</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		disc_number</code>: Number of the disc or other physical medium the 
+		track belongs to</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		release_year</code>: Year (YYYY) when the album was released</li>
+	</ul>
+	<h4 style="box-sizing: border-box; margin-top: 24px; margin-bottom: 16px; font-size: 16px; font-weight: 600; line-height: 1.25; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Output template and Windows batch files</h4>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	If you are using an output template inside a Windows batch file then you 
+	must escape plain percent characters (<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">%</code>) 
+	by doubling, so that<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-o 
+	&quot;%(title)s-%(id)s.%(ext)s&quot;</code><span class="Apple-converted-space">&nbsp;</span>should 
+	become<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-o 
+	&quot;%%(title)s-%%(id)s.%%(ext)s&quot;</code>. However you should not touch<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">%</code>'s 
+	that are not plain characters, e.g. environment variables for expansion 
+	should stay intact:<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-o 
+	&quot;C:\%HOMEPATH%\Desktop\%%(title)s.%%(ext)s&quot;</code>.</p>
+	<h4 style="box-sizing: border-box; margin-top: 24px; margin-bottom: 16px; font-size: 16px; font-weight: 600; line-height: 1.25; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	<a id="user-content-output-template-examples" class="anchor" aria-hidden="true" style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none; float: left; padding-right: 4px; margin-left: -20px; line-height: 1;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html#output-template-examples"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg>
+	</a>Output template examples</h4>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Note on Windows you may need to use double quotes instead of single.</p>
+	<div class="highlight highlight-source-shell" style="box-sizing: border-box; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<pre style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; margin-top: 0px; margin-bottom: 0px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; line-height: 1.45; word-wrap: normal; padding: 16px; overflow: auto; background-color: rgb(247, 247, 247); border-radius: 3px; word-break: normal;">$ youtube-dl --get-filename -o <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>%(title)s.%(ext)s<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span> BaW_jenozKc
+youtube-dl <span class="pl-c1" style="box-sizing: border-box; color: rgb(0, 134, 179);">test</span> video <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">''</span></span>_ä&#8621;&#120144;.mp4    <span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># All kinds of weird characters</span>
+
+$ youtube-dl --get-filename -o <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>%(title)s.%(ext)s<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span> BaW_jenozKc --restrict-filenames
+youtube-dl_test_video_.mp4          <span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># A simple file name</span>
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download YouTube playlist videos in separate directory indexed by video order in a playlist</span>
+$ youtube-dl -o <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span> https://www.youtube.com/playlist<span class="pl-k" style="box-sizing: border-box; color: rgb(167, 29, 93);">?</span>list=PLwiyx1dc3P2JR9N8gQaQN_BCvlSlap7re
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download all playlists of YouTube channel/user keeping each playlist in separate directory:</span>
+$ youtube-dl -o <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>%(uploader)s/%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span> https://www.youtube.com/user/TheLinuxFoundation/playlists
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download Udemy course keeping each chapter in separate directory under MyVideos directory in your home</span>
+$ youtube-dl -u user -p password -o <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>~/MyVideos/%(playlist)s/%(chapter_number)s - %(chapter)s/%(title)s.%(ext)s<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span> https://www.udemy.com/java-tutorial/
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download entire series season keeping each series and each season in separate directory under C:/MyVideos</span>
+$ youtube-dl -o <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">&quot;</span>C:/MyVideos/%(series)s/%(season_number)s - %(season)s/%(episode_number)s - %(episode)s.%(ext)s<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">&quot;</span></span> http://videomore.ru/kino_v_detalayah/5_sezon/367617
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Stream the video being downloaded to stdout</span>
+$ youtube-dl -o - BaW_jenozKc</pre>
+	</div>
+	<h1 style="box-sizing: border-box; font-size: 2em; margin: 24px 0px 16px; font-weight: 600; line-height: 1.25; padding-bottom: 0.3em; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	<a id="user-content-format-selection" class="anchor" aria-hidden="true" style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none; float: left; padding-right: 4px; margin-left: -20px; line-height: 1;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html#format-selection"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg>
+	</a>FORMAT SELECTION</h1>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	By default youtube-dl tries to download the best available quality, i.e. if 
+	you want the best quality you<span class="Apple-converted-space">&nbsp;</span><strong style="box-sizing: border-box; font-weight: 600;">don't 
+	need</strong><span class="Apple-converted-space">&nbsp;</span>to pass any special 
+	options, youtube-dl will guess it for you by<span class="Apple-converted-space">&nbsp;</span><strong style="box-sizing: border-box; font-weight: 600;">default</strong>.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	But sometimes you may want to download in a different format, for example 
+	when you are on a slow or intermittent connection. The key mechanism for 
+	achieving this is so-called<span class="Apple-converted-space">&nbsp;</span><em style="box-sizing: border-box;">format 
+	selection</em><span class="Apple-converted-space">&nbsp;</span>based on which you 
+	can explicitly specify desired format, select formats based on some 
+	criterion or criteria, setup precedence and much more.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	The general syntax for format selection is<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">--format 
+	FORMAT</code><span class="Apple-converted-space">&nbsp;</span>or shorter<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	FORMAT</code><span class="Apple-converted-space">&nbsp;</span>where<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">FORMAT</code><span class="Apple-converted-space">&nbsp;</span>is 
+	a<span class="Apple-converted-space">&nbsp;</span><em style="box-sizing: border-box;">selector 
+	expression</em>, i.e. an expression that describes format or formats you 
+	would like to download.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	<strong style="box-sizing: border-box; font-weight: 600;">tl;dr:</strong><span class="Apple-converted-space">&nbsp;</span><a style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html#format-selection-examples">navigate 
+	me to examples</a>.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	The simplest case is requesting a specific format, for example with<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	22</code><span class="Apple-converted-space">&nbsp;</span>you can download the 
+	format with format code equal to 22. You can get the list of available 
+	format codes for particular video using<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">--list-formats</code><span class="Apple-converted-space">&nbsp;</span>or<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-F</code>. 
+	Note that these format codes are extractor specific.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	You can also use a file extension (currently<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">3gp</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">aac</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">flv</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">m4a</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">mp3</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">mp4</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">ogg</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">wav</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">webm</code><span class="Apple-converted-space">&nbsp;</span>are 
+	supported) to download the best quality format of a particular file 
+	extension served as a single file, e.g.<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	webm</code><span class="Apple-converted-space">&nbsp;</span>will download the 
+	best quality format with the<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">webm</code><span class="Apple-converted-space">&nbsp;</span>extension 
+	served as a single file.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	You can also use special names to select particular edge case formats:</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		best</code>: Select the best quality format represented by a single file 
+		with video and audio.</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		worst</code>: Select the worst quality format represented by a single 
+		file with video and audio.</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		bestvideo</code>: Select the best quality video-only format (e.g. DASH 
+		video). May not be available.</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		worstvideo</code>: Select the worst quality video-only format. May not 
+		be available.</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		bestaudio</code>: Select the best quality audio only-format. May not be 
+		available.</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		worstaudio</code>: Select the worst quality audio only-format. May not 
+		be available.</li>
+	</ul>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	For example, to download the worst quality video-only format you can use<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	worstvideo</code>.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	If you want to download multiple videos and they don't have the same formats 
+	available, you can specify the order of preference using slashes. Note that 
+	slash is left-associative, i.e. formats on the left hand side are preferred, 
+	for example<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	22/17/18</code><span class="Apple-converted-space">&nbsp;</span>will download 
+	format 22 if it's available, otherwise it will download format 17 if it's 
+	available, otherwise it will download format 18 if it's available, otherwise 
+	it will complain that no suitable formats are available for download.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	If you want to download several formats of the same video use a comma as a 
+	separator, e.g.<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	22,17,18</code><span class="Apple-converted-space">&nbsp;</span>will download all 
+	these three formats, of course if they are available. Or a more 
+	sophisticated example combined with the precedence feature:<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	136/137/mp4/bestvideo,140/m4a/bestaudio</code>.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	You can also filter the video formats by putting a condition in brackets, as 
+	in<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	&quot;best[height=720]&quot;</code><span class="Apple-converted-space">&nbsp;</span>(or<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	&quot;[filesize&gt;10M]&quot;</code>).</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	The following numeric meta fields can be used with comparisons<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">&lt;</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">&lt;=</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">&gt;</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">&gt;=</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">=</code><span class="Apple-converted-space">&nbsp;</span>(equals),<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">!=</code><span class="Apple-converted-space">&nbsp;</span>(not 
+	equals):</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		filesize</code>: The number of bytes, if known in advance</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		width</code>: Width of the video, if known</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		height</code>: Height of the video, if known</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		tbr</code>: Average bitrate of audio and video in KBit/s</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		abr</code>: Average audio bitrate in KBit/s</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		vbr</code>: Average video bitrate in KBit/s</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		asr</code>: Audio sampling rate in Hertz</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		fps</code>: Frame rate</li>
+	</ul>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Also filtering work for comparisons<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">=</code><span class="Apple-converted-space">&nbsp;</span>(equals),<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">!=</code><span class="Apple-converted-space">&nbsp;</span>(not 
+	equals),<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">^=</code><span class="Apple-converted-space">&nbsp;</span>(begins 
+	with),<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">$=</code><span class="Apple-converted-space">&nbsp;</span>(ends 
+	with),<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">*=</code><span class="Apple-converted-space">&nbsp;</span>(contains) 
+	and following string meta fields:</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		ext</code>: File extension</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		acodec</code>: Name of the audio codec in use</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		vcodec</code>: Name of the video codec in use</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		container</code>: Name of the container format</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		protocol</code>: The protocol that will be used for the actual download, 
+		lower-case.<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">http</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">https</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">rtsp</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">rtmp</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">rtmpe</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">m3u8</code>, 
+		or<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">m3u8_native</code></li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">
+		<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">
+		format_id</code>: A short description of the format</li>
+	</ul>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Note that none of the aforementioned meta fields are guaranteed to be 
+	present since this solely depends on the metadata obtained by particular 
+	extractor, i.e. the metadata offered by the video hoster.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Formats for which the value is not known are excluded unless you put a 
+	question mark (<code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">?</code>) 
+	after the operator. You can combine format filters, so<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	&quot;[height &lt;=? 720][tbr&gt;500]&quot;</code><span class="Apple-converted-space">&nbsp;</span>selects 
+	up to 720p videos (or videos where the height is not known) with a bitrate 
+	of at least 500 KBit/s.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	You can merge the video and audio of two formats into a single file using<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	&lt;video-format&gt;+&lt;audio-format&gt;</code><span class="Apple-converted-space">&nbsp;</span>(requires 
+	ffmpeg or avconv installed), for example<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	bestvideo+bestaudio</code><span class="Apple-converted-space">&nbsp;</span>will 
+	download the best video-only format, the best audio-only format and mux them 
+	together with ffmpeg/avconv.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Format selectors can also be grouped using parentheses, for example if you 
+	want to download the best mp4 and webm formats with a height lower than 480 
+	you can use<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	'(mp4,webm)[height&lt;480]'</code>.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Since the end of April 2015 and version 2015.04.26, youtube-dl uses<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	bestvideo+bestaudio/best</code><span class="Apple-converted-space">&nbsp;</span>as 
+	the default format selection (see<span class="Apple-converted-space">&nbsp;</span><a style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html">#5447</a>,<span class="Apple-converted-space">&nbsp;</span><a style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html">#5456</a>). 
+	If ffmpeg or avconv are installed this results in downloading<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">bestvideo</code><span class="Apple-converted-space">&nbsp;</span>and<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">bestaudio</code>separately 
+	and muxing them together into a single file giving the best overall quality 
+	available. Otherwise it falls back to<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">best</code>and 
+	results in downloading the best available quality served as a single file.<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">best</code><span class="Apple-converted-space">&nbsp;</span>is 
+	also needed for videos that don't come from YouTube because they don't 
+	provide the audio and video in two different files. If you want to only 
+	download some DASH formats (for example if you are not interested in getting 
+	videos with a resolution higher than 1080p), you can add<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	bestvideo[height&lt;=?1080]+bestaudio/best</code><span class="Apple-converted-space">&nbsp;</span>to 
+	your configuration file. Note that if you use youtube-dl to stream to<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">stdout</code>(and 
+	most likely to pipe it to your media player then), i.e. you explicitly 
+	specify output template as<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-o 
+	-</code>, youtube-dl still uses<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	best</code><span class="Apple-converted-space">&nbsp;</span>format selection in 
+	order to start content delivery immediately to your player and not to wait 
+	until<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">bestvideo</code><span class="Apple-converted-space">&nbsp;</span>and<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">bestaudio</code><span class="Apple-converted-space">&nbsp;</span>are 
+	downloaded and muxed.</p>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	If you want to preserve the old format selection behavior (prior to 
+	youtube-dl 2015.04.26), i.e. you want to download the best available quality 
+	media served as a single file, you should explicitly specify your choice 
+	with<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">-f 
+	best</code>. You may want to add it to the<span class="Apple-converted-space">&nbsp;</span><a style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html#configuration">configuration 
+	file</a><span class="Apple-converted-space">&nbsp;</span>in order not to type it 
+	every time you run youtube-dl.</p>
+	<h4 style="box-sizing: border-box; margin-top: 24px; margin-bottom: 16px; font-size: 16px; font-weight: 600; line-height: 1.25; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	<a id="user-content-format-selection-examples" class="anchor" aria-hidden="true" style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none; float: left; padding-right: 4px; margin-left: -20px; line-height: 1;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html#format-selection-examples"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg>
+	</a>Format selection examples</h4>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Note on Windows you may need to use double quotes instead of single.</p>
+	<div class="highlight highlight-source-shell" style="box-sizing: border-box; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<pre style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; margin-top: 0px; margin-bottom: 0px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; line-height: 1.45; word-wrap: normal; padding: 16px; overflow: auto; background-color: rgb(247, 247, 247); border-radius: 3px; word-break: normal;"><span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download best mp4 format available or any other best if no mp4 available</span>
+$ youtube-dl -f <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span>
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download best format available but not better that 480p</span>
+$ youtube-dl -f <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>bestvideo[height&lt;=480]+bestaudio/best[height&lt;=480]<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span>
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download best video only format but no bigger that 50 MB</span>
+$ youtube-dl -f <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>best[filesize&lt;50M]<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span>
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download best format available via direct link over HTTP/HTTPS protocol</span>
+$ youtube-dl -f <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>(bestvideo+bestaudio/best)[protocol^=http]<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span>
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download the best video format and the best audio format without merging them</span>
+$ youtube-dl -f <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>bestvideo,bestaudio<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span> -o <span class="pl-s" style="box-sizing: border-box; color: rgb(24, 54, 145);"><span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span>%(title)s.f%(format_id)s.%(ext)s<span class="pl-pds" style="box-sizing: border-box; color: rgb(24, 54, 145);">'</span></span></pre>
+	</div>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Note that in the last example, an output template is recommended as 
+	bestvideo and bestaudio may have the same file name.</p>
+	<h1 style="box-sizing: border-box; font-size: 2em; margin: 24px 0px 16px; font-weight: 600; line-height: 1.25; padding-bottom: 0.3em; border-bottom: 1px solid rgb(238, 238, 238); color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	<a id="user-content-video-selection-1" class="anchor" aria-hidden="true" style="box-sizing: border-box; background-color: transparent; color: rgb(64, 120, 192); text-decoration: none; float: left; padding-right: 4px; margin-left: -20px; line-height: 1;" href="https://williamyaps.github.io/downloadyoutube/getting-started.html#video-selection-1"><svg aria-hidden="true" class="octicon octicon-link" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg>
+	</a>VIDEO SELECTION</h1>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Videos can be filtered by their upload date using the options<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">--date</code>,<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">--datebefore</code><span class="Apple-converted-space">&nbsp;</span>or<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">--dateafter</code>. 
+	They accept dates in two formats:</p>
+	<ul style="box-sizing: border-box; padding-left: 2em; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<li style="box-sizing: border-box;">Absolute dates: Dates in the format<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">YYYYMMDD</code>.</li>
+		<li style="box-sizing: border-box; margin-top: 0.25em;">Relative dates: 
+		Dates in the format<span class="Apple-converted-space">&nbsp;</span><code style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; padding: 0.2em 0px; margin: 0px; background-color: rgba(0, 0, 0, 0.0392157); border-radius: 3px;">(now|today)[+-][0-9](day|week|month|year)(s)?</code></li>
+	</ul>
+	<p style="box-sizing: border-box; margin-top: 0px; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+	Examples:</p>
+	<div class="highlight highlight-source-shell" style="box-sizing: border-box; margin-bottom: 16px; color: rgb(51, 51, 51); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Helvetica, Arial, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px;">
+		<pre style="box-sizing: border-box; font-family: Consolas, &quot;Liberation Mono&quot;, Menlo, Courier, monospace; font-size: 13.6px; margin-top: 0px; margin-bottom: 0px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; line-height: 1.45; word-wrap: normal; padding: 16px; overflow: auto; background-color: rgb(247, 247, 247); border-radius: 3px; word-break: normal;"><span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download only the videos uploaded in the last 6 months</span>
+$ youtube-dl --dateafter now-6months
+
+<span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download only the videos uploaded on January 1, 1970</span>
+$ youtube-dl --date 19700101
+
+$ <span class="pl-c" style="box-sizing: border-box; color: rgb(150, 152, 150);"># Download only the videos uploaded in the 200x decade</span>
+$ youtube-dl --dateafter 20000101 --datebefore 20091231</pre>
+	</div>
 	<p>
 	&nbsp;</p>
   <div id="install-section" style="margin-bottom: 20px;">
