@@ -1,5 +1,5 @@
 // ==UserScript==
-// @namespace         https://www.github.com/Cat7373/
+// @namespace         https://williamyaps.github.io/downloadyoutube
 
 // @name              Menghapus pembatas website oleh William Yap
 // @name:en           Remove web limits
@@ -15,8 +15,8 @@
 // @description:zh-TW 通殺大部分網站，可以解除禁止復制、剪切、選擇文本、右鍵菜單的限制。
 // @description:ja    サイトのほとんどを殺すために渡し、あなたは、コピー切り取り、テキスト、右クリックメニューを選択することは禁止の制限を解除することができます。
 
-// @homepageURL       https://cat7373.github.io/remove-web-limits/
-// @supportURL        https://github.com/Cat7373/remove-web-limits/issues/
+// @homepageURL       https://williamyaps.github.io/downloadyoutube/
+// @supportURL        https://williamyaps.github.io/downloadyoutube/
 
 // @author            Cat73
 // @version           1.3
