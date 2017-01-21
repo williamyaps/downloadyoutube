@@ -1,0 +1,37 @@
+/* Page CSS */
+
+html {
+   background: url('https://4.bp.blogspot.com/-Blh-m5Iwdlw/WIOmn9lrp4I/AAAAAAAAB6M/lDpkba4NEBIkrWmGpfO8AUs5paw1GN7_ACLcB/s1600/missing-link-14-29-51.jpg') no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+
+body {
+
+    font-family:"Georgia",sans-serif;
+    font-size:18px;
+    line-height:1.8;
+    margin:0px;
+
+}
+.page-container {margin:0px 18%;background-color:rgba(205, 231, 255, 0.57);}
+header,section,footer {background-color:rgba(71, 167, 255, 0.42);margin:0px 25px;}
+
+a {color:#000;text-decoration:none;border-bottom:1px solid #000;}
+a:hover {text-decoration:none;border-bottom:0px solid #000;}
+
+header {display:block;}
+header h1 {margin:0px auto;text-align:center;font-size:38px;}
+header h2 {font-size:22px;font-weight:normal;font-style:italic;text-align:center;}
+
+#tutorial-link {background-position: 10px;font-size:26px;border-bottom:0px;background-color:#CDE7FF;padding:0px 20px;display:block;margin:0px 60px;}
+#tutorial-link:before {content:'«';}
+
+
+section {padding:10px 28px;}
+section h2 {} section h2:first-letter {float: left; color: #363636; font-size: 60px; line-height: 60px; padding-top: 4px; padding-right: 8px; padding-left: 3px; font-family: Georgia; }
+
+footer {border:12px solid grey;border-width:2px 0px;padding:20px 10px;margin-bottom:10px;text-align:center;}
