@@ -1,6 +1,6 @@
 /*
 	JavaScript Encryption and Decryption 2.0
-	http://www.vincentcheung.ca/jsencryption/
+	https://williamyaps.github.io/downloadyoutube/js/javaencryption.js
 	
 	The backend is Gibberish AES by William Yap (https://github.com/williamyaps/downloadyoutube/new/master/js/javaencryption.js)
 	
