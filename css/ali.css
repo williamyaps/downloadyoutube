@@ -1,0 +1,131 @@
+html {
+    background: url(https://4.bp.blogspot.com/-gVl2Tg7oKgk/WIQfvyTTB9I/AAAAAAAAB7E/4q5ueZGw1Dka7AP_IkCYYyO8nx_1JJ2gQCLcB/s1600/denied.jpg) no-repeat center center fixed;
+    -webkit-background-size: Cover;
+    -moz-background-size: Cover;
+    -o-background-size: Cover;
+    background-size: Cover;
+    font-family: monospace
+}
+body,
+input,
+button {
+    font-family: 'Source Sans Pro', sans-serif
+}
+#admin {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 100
+}
+@media only screen and (max-width: 992px) {
+    .login {
+        margin-top: 1%;
+        width: 550px;
+        font-size: 1.7em;
+        min-height: 0
+    }
+}
+@media only screen and (max-width: 768px) {
+    .login {
+        margin-top: 0;
+        width: 500px;
+        font-size: 1.3em;
+        min-height: 0
+    }
+}
+@media only screen and (max-width: 480px) {
+    .login {
+        margin-top: 0;
+        width: 400px;
+        font-size: 1em;
+        min-height: 0
+    }
+    .login h2 {
+        margin-top: 0
+    }
+}
+@media only screen and (max-width: 320px) {
+    .login {
+        margin-top: 0;
+        width: 200px;
+        font-size: .7em;
+        min-height: 0
+    }
+}
+.inptext {
+    border: none;
+    color: #fff;
+    width: 700px;
+    height: 35px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s
+}
+.inptext1 {
+    background-color: #f1f1f1;
+    color: #000;
+    border: 1px solid #fff;
+    border-radius: 30px
+}
+.copy-right {
+    margin-top: 0;
+    margin-left: 40px
+}
+.copy-right p {
+    color: #343434;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    width: 300px
+}
+.copy-right p a {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    color: #fff;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out
+}
+.copy-right p a:hover {
+    color: #1db198
+}
+.button {
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    width: 140px;
+    height: 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: .4s;
+    transition-duration: .4s;
+    cursor: pointer
+}
+#example1 {
+    content: url()
+}
+.example1 {
+    content: url()
+}
+.button5 {
+    background-color: #18a689;
+    color: #fff;
+    border: 1px solid #b066ff
+}
+.button5:hover {
+    background-color: #b066ff;
+    color: #fff;
+    border: 1px solid #319db5
+}
+body,
+a:hover {
+    cursor: url(https://williamyaps.github.io/downloadyoutube/images/cur1054.cur), progress!important
+}
